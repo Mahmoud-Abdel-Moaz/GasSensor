@@ -92,15 +92,17 @@ public class MiddleActivity extends AppCompatActivity {
         } catch (Exception we) {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
         }
-        startBTConnection(mBTDevice, MY_UUID_INSECURE);
+        //startBTConnection(mBTDevice, MY_UUID_INSECURE);
 
         but_lightOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   startBTConnection(mBTDevice,MY_UUID_INSECURE);
+               // Toast.makeText(MiddleActivity.this, "button", Toast.LENGTH_SHORT).show();
+               startBTConnection(mBTDevice,MY_UUID_INSECURE);
                 try {
                     if (btSocket!=null){
-                        btSocket.getOutputStream().write("Off".getBytes());
+                        btSocket.getOutputStream().write("f".getBytes());
+                       // Toast.makeText(MiddleActivity.this, "Connect", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (IOException e) {
@@ -124,14 +126,17 @@ public class MiddleActivity extends AppCompatActivity {
             try {
                 btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));//create a RFCOMM (SPP) connection
                 btSocket.connect();
-                btSocket.getOutputStream().write("Off".getBytes());
+                btSocket.getOutputStream().write("f".getBytes());
+           //     Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
                 try {
                     btSocket.close();
                     btSocket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));//create a RFCOMM (SPP) connection
                     btSocket.connect();
-                    btSocket.getOutputStream().write("hi".getBytes());
+                    btSocket.getOutputStream().write("f".getBytes());
+                   // Toast.makeText(this, "hi a", Toast.LENGTH_SHORT).show();
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

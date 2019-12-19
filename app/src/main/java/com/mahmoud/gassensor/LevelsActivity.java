@@ -297,6 +297,12 @@ public class LevelsActivity extends AppCompatActivity {
         }
         public void run(){
 
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             while (true){
                 try {
                     Log.d(TAG,"run start");
@@ -328,7 +334,7 @@ public class LevelsActivity extends AppCompatActivity {
                                 but_high.setEnabled(false);
                                 but_high.setBackgroundDrawable(LevelsActivity.this.getResources().getDrawable(R.drawable.high));
                             }
-                            else if (incomingMessage.equalsIgnoreCase("b")){
+                            else if (incomingMessage.equalsIgnoreCase("c")){
                                 but_high.setEnabled(true);
                                 but_high.setBackgroundDrawable(LevelsActivity.this.getResources().getDrawable(R.drawable.high_on));
 
